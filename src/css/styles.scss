@@ -1,0 +1,96 @@
+@import "theme";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+/* You can add global styles to this file, and also import other style files */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #ddd;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #666;
+  }
+}
+
+body {
+  background-color: #dedede;
+  font-family: "Balsamiq Sans", cursive;
+}
+
+.grid-container {
+  display: grid;
+}
+
+.container {
+  padding: 0em 12em;
+  @media screen and (max-width: 1200px) {
+    padding: 0em 8em;
+  }
+  @media screen and (max-width: 900px) {
+    padding: 1em 1em;
+  }
+}
+
+.back-drop {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(black, 0.4) !important;
+  z-index: 2000;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-normal {
+  cursor: auto;
+}
+
+.place-center {
+  display: grid;
+  place-content: center;
+}
+
+.error-container {
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+  .icon {
+    justify-self: center;
+    height: 300px;
+    width: 300px;
+    @media screen and (max-width: 900px) {
+      height: 200px;
+      width: 200px;
+    }
+  }
+  .cta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+.loading-btn {
+  .mat-button-wrapper {
+    padding: 5x;
+    display: flex;
+    justify-content: center;
+    .spinner {
+      margin: 5px;
+    }
+  }
+}

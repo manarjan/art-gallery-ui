@@ -1,0 +1,35 @@
+{
+  "name": "Un-Art Gallery",
+  "short_name": "Un-Art Gallery",
+  "theme_color": "#1976d2",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "assets/icons/ms-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "density": "3"
+    },
+    {
+      "src": "assets/icons/ms-icon-70x70.png",
+      "sizes": "70x70",
+      "type": "image/png",
+      "density": "1.5"
+    },
+    {
+      "src": "assets/icons/ms-icon-150x150.png",
+      "sizes": "150x150",
+      "type": "image/png",
+      "density": "3"
+    },
+    {
+      "src": "assets/icons/ms-icon-310x310.png",
+      "sizes": "310x310",
+      "type": "image/png",
+      "density": "4"
+    }
+  ]
+}
