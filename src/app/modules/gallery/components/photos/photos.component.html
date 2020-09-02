@@ -1,0 +1,65 @@
+<div
+  class="grid-container photo-container"
+  [ngClass]="{ grid: mode === ViewMode.GRID, list: mode === ViewMode.LIST }"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+>
+  <app-photo-card
+    class=" card
+        {{ photo.width / photo.height >= 1 ? 'horizontal' : 'vertical' }}  
+        "
+    *ngFor="let photo of photos"
+    [photo]="photo"
+    [mode]="mode"
+    (click)="openCarousel(photo)"
+  ></app-photo-card>
+  <div
+    *ngIf="photos.length > 0"
+    inViewport
+    [inViewportOptions]="{ threshold: [100] }"
+    (inViewportAction)="$event.visible && onIntersection($event)"
+  >
+    &nbsp;
+  </div>
+
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayHasBackdrop]="true"
+    [cdkConnectedOverlayOpen]="galleryPanelOpen"
+    (backdropClick)="toggleGallery()"
+    cdkConnectedOverlayPanelClass="gallery-panel"
+    [cdkConnectedOverlayGrowAfterOpen]="true"
+    (overlayKeydown)="onKeydownEvent($event)"
+    [cdkConnectedOverlayPositions]="[
+      {
+        originX: 'start',
+        originY: 'top',
+        overlayX: 'start',
+        overlayY: 'top'
+      }
+    ]"
+  >
+    <div class="image-container">
+      <img class="photo" [src]="selectedPhoto.urls.regular" alt="" />
+      <div class="close" (click)="toggleGallery()">
+        <i class="fa fa-times"></i>
+      </div>
+      <div class="details">
+        <div class="user">
+          <img [src]="selectedPhoto.user.profile_image.medium" alt="" />
+          <a [href]="selectedPhoto.user.portfolio_url" target="__blank">
+            @{{ selectedPhoto.user.username }}
+          </a>
+        </div>
+        <div
+          class="heart cursor-pointer"
+          (click)="toggleFav(selectedPhoto)"
+          [ngClass]="{ active: selectedPhoto.liked_by_user }"
+        >
+          <i class="fa fa-heart"></i>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

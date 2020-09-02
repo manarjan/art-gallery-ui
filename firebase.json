@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/art-gallery",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/art-gallery-api/v1/**",
+        "function": "api"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

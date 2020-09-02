@@ -1,0 +1,12 @@
+<ng-container *ngIf="favourites$ | async as photos">
+  <div class="container" *ngIf="photos.length > 0; else noFavs">
+    <h1>Your Favourites</h1>
+    <app-photos [photos]="photos" [mode]="0"></app-photos>
+  </div>
+  <ng-template #noFavs>
+    <div class="container error-container">
+      <h1>You have not saved any photos as Favourites yet!</h1>
+      <mat-icon class="icon" svgIcon="void"></mat-icon>
+    </div>
+  </ng-template>
+</ng-container>

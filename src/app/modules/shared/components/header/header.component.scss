@@ -1,0 +1,23 @@
+@import "variables";
+nav {
+  height: 60px;
+  padding: 0 10px;
+  background-color: $primary;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: space-between;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  img {
+    padding: 10px;
+    width: 50px;
+  }
+  font-weight: 700;
+}

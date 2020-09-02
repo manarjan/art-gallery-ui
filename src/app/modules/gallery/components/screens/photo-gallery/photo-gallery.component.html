@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="cta">
+    <mat-form-field class="search" floatLabel="never">
+      <mat-placeholder>Search for image</mat-placeholder>
+      <mat-icon
+        matPrefix
+        fontSet="fa"
+        fontIcon="fa-search"
+        color="primary"
+      ></mat-icon>
+      <input
+        type="search"
+        matInput
+        id="query"
+        [formControl]="search"
+        (keyup.enter)="onSearch()"
+      />
+      <mat-icon
+        matSuffix
+        fontSet="fa"
+        fontIcon="fa-send"
+        color="primary"
+      ></mat-icon>
+    </mat-form-field>
+    <mat-button-toggle-group class="viewMode" [(ngModel)]="viewMode">
+      <mat-button-toggle [value]="ViewMode.GRID">
+        <i class="fa fa-th"></i>
+      </mat-button-toggle>
+      <mat-button-toggle [value]="ViewMode.LIST">
+        <i class="fa fa-th-list"></i> </mat-button-toggle
+    ></mat-button-toggle-group>
+  </div>
+  <ng-container *ngIf="photos$ | async as photos">
+    <ng-container *ngIf="photos.data.length > 0; else noResult">
+      <app-photos
+        [photos]="photos.data"
+        [mode]="viewMode"
+        (nextPage)="nextPage()"
+      ></app-photos>
+    </ng-container>
+  </ng-container>
+  <ng-template #noResult>
+    <div class="container error-container">
+      <h1>Sorry! Your search did not return any results 🙁</h1>
+      <mat-icon class="icon" svgIcon="void"></mat-icon>
+    </div>
+  </ng-template>
+</div>

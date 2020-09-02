@@ -1,0 +1,122 @@
+.photo-card {
+  cursor: pointer;
+  border: 2px solid var(--shade-color);
+  &.grid {
+    transition: transform 250ms ease-in-out;
+    transform: scale(1);
+    height: 100%;
+    width: 100%;
+    position: relative;
+    .heart {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 1em;
+      z-index: 5;
+      i {
+        font-size: large;
+        transition: all 250ms ease-in;
+      }
+    }
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: var(--shade-color);
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      &::after {
+        opacity: 0.3;
+      }
+      .details {
+        opacity: 1;
+      }
+      .heart {
+        display: block;
+      }
+    }
+
+    .details {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 0.5em;
+      align-items: center;
+      justify-content: space-between;
+      display: flex;
+      font-size: small;
+      opacity: 0;
+      transition: opacity 250ms ease-in;
+      background-color: rgba(white, 0.6);
+      z-index: 2;
+    }
+
+    &::after {
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: var(--shade-color);
+      opacity: 0;
+      transition: opacity 250ms ease-in;
+    }
+  }
+  &.list {
+    border-radius: 5px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: var(--shade-color);
+    }
+    .heart {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      i {
+        font-size: x-large;
+      }
+    }
+    .details {
+      display: grid;
+      place-content: center;
+      .user {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+i {
+  color: #333;
+  transition: all 250ms ease-in;
+  &.active {
+    color: red;
+  }
+}
+.user {
+  display: flex;
+  align-items: center;
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 0.5em;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+}

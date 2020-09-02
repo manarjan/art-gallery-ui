@@ -1,0 +1,97 @@
+<div class="container">
+  <mat-icon class="icon" svgIcon="login"></mat-icon>
+
+  <div class="login-form">
+    <div class="logo"><img src="assets/logo.png" alt="" /> Un-Art Gallery</div>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div class="credentials">
+        <div
+          *ngIf="errMsg"
+          id="login-errMsg"
+          class="text-white mat-flat-button mat-warn cursor-normal"
+        >
+          {{ errMsg }}
+        </div>
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>Email</mat-label>
+          <mat-icon
+            matPrefix
+            class="text-primary"
+            fontSet="far"
+            fontIcon="fa-user"
+          ></mat-icon>
+          <input
+            id="email"
+            matInput
+            type="email"
+            class="px-2"
+            placeholder="Your Email Id"
+            formControlName="email"
+          /><mat-error *ngIf="loginForm.get('email').invalid"
+            >You must enter a value</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>Password</mat-label>
+          <mat-icon
+            matPrefix
+            fontSet="fa"
+            class="text-primary"
+            fontIcon="fa-lock"
+          ></mat-icon>
+          <input
+            id="password"
+            matInput
+            class="px-2"
+            [type]="passwordVisible ? 'text' : 'password'"
+            placeholder="Your password"
+            formControlName="password"
+          />
+          <mat-icon
+            matSuffix
+            fontSet="fa"
+            color="accent"
+            class="cursor-pointer"
+            [fontIcon]="passwordVisible ? 'fa-eye' : 'fa-eye-slash'"
+            [matTooltip]="passwordVisible ? 'Hide Password' : 'Show Password'"
+            (click)="togglePassword()"
+          ></mat-icon>
+
+          <mat-error *ngIf="loginForm.get('password').invalid"
+            >You must enter a value</mat-error
+          >
+        </mat-form-field>
+        <button
+          mat-flat-button
+          color="primary"
+          type="sumbit"
+          class="loading-btn"
+          [disabled]="loading || loginForm.invalid"
+        >
+          <div class="spinner" *ngIf="loading; else notLoading">
+            <mat-progress-spinner
+              diameter="30"
+              strokeWidth="4"
+              color="accent"
+              mode="indeterminate"
+            ></mat-progress-spinner>
+          </div>
+          <ng-template #notLoading>Login</ng-template>
+        </button>
+        <br />
+        <mat-divider></mat-divider>
+        <div class="social" (click)="signInWithGoogle()">
+          <button mat-icon-button color="primary">
+            <i class="fab fa-google"></i>
+          </button>
+          Log in with Google
+        </div>
+        <mat-divider></mat-divider>
+        <div class="sign-up">
+          Don't have an account?
+          <a [routerLink]="['../', 'sign-up']">Sign Up</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

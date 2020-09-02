@@ -1,0 +1,8 @@
+{
+  "/art-gallery-api/v1/*": {
+    "target": "http://localhost:5001/unart-gallery/us-central1/api",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

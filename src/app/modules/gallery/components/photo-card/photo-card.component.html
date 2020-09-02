@@ -1,0 +1,29 @@
+<div
+  class="photo-card"
+  [ngClass]="{ grid: mode === ViewMode.GRID, list: mode === ViewMode.LIST }"
+  style="
+    --shade-color: {{ photo.color }}
+  "
+>
+  <div class="heart cursor-pointer" (click)="toggleFav($event, photo)">
+    <i class="fa fa-heart" [ngClass]="{ active: liked$ | async }"></i>
+  </div>
+  <img
+    loading="lazy"
+    [src]="photo.urls.small"
+    [alt]="photo.alt_description"
+    width="{{ photo.width }}"
+    height="{{ photo.height }}"
+  />
+  <div class="details">
+    <div class="user">
+      <img
+        [src]="photo.user.profile_image.medium"
+        [alt]="photo.user.first_name"
+      />
+      <a [href]="photo.user.portfolio_url" target="__blank">
+        @{{ photo.user.username }}
+      </a>
+    </div>
+  </div>
+</div>

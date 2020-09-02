@@ -1,0 +1,11 @@
+<div class="error-container place-center">
+  <img src="assets/logo.png" alt="logo" class="logo" />
+  <h1>{{ errorMsg }}</h1>
+  <mat-icon class="icon" [svgIcon]="icon"></mat-icon>
+  <div class="cta">
+    <button mat-flat-button color="accent" (click)="onBack()">Go Back</button>
+    <button mat-flat-button color="primary" [routerLink]="['/']">
+      Go Home
+    </button>
+  </div>
+</div>
