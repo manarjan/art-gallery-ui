@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "unart-gallery": {
+      "hosting": {
+        "art-gallery": [
+          "unart-gallery"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "unart-gallery"
+  }
+}
